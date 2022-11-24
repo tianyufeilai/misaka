@@ -175,21 +175,17 @@ class TelecomLotter:
 def main(phone, password):
     apiType = 1
     try:
-        url = "https://api.ruirui.fun/telecom/getLiveInfo"
+        url = "https://raw.githubusercontent.com/limoruirui/Hello-World/main/telecomLiveInfo.json"
         data = get(url, timeout=5).json()
     except:
-        try:
-            url = "https://raw.githubusercontent.com/limoruirui/Hello-Wolrd/main/telecomLiveInfo.json"
-            data = get(url, timeout=5).json()
-        except:
-            url = "https://xbk.189.cn/xbkapi/lteration/index/recommend/anchorRecommend?provinceCode=01"
-            random_phone = f"1537266{randint(1000, 9999)}"
-            headers = {
-                "referer": "https://xbk.189.cn/xbk/newHome?version=9.4.0&yjz=no&l=card&longitude=%24longitude%24&latitude=%24latitude%24&utm_ch=hg_app&utm_sch=hg_sh_shdbcdl&utm_as=xbk_tj&loginType=1",
-                "user-agent": f"CtClient;9.6.1;Android;12;SM-G9860;{b64encode(random_phone[5:11].encode()).decode().strip('=+')}!#!{b64encode(random_phone[0:5].encode()).decode().strip('=+')}"
-            }
-            data = get(url, headers=headers).json()
-            apiType = 2
+        url = "https://xbk.189.cn/xbkapi/lteration/index/recommend/anchorRecommend?provinceCode=01"
+        random_phone = f"1537266{randint(1000, 9999)}"
+        headers = {
+            "referer": "https://xbk.189.cn/xbk/newHome?version=9.4.0&yjz=no&l=card&longitude=%24longitude%24&latitude=%24latitude%24&utm_ch=hg_app&utm_sch=hg_sh_shdbcdl&utm_as=xbk_tj&loginType=1",
+            "user-agent": f"CtClient;9.6.1;Android;12;SM-G9860;{b64encode(random_phone[5:11].encode()).decode().strip('=+')}!#!{b64encode(random_phone[0:5].encode()).decode().strip('=+')}"
+        }
+        data = get(url, headers=headers).json()
+        apiType = 2
     print(data)
     liveListInfo = {}
     allLiveInfo = data.values() if apiType == 1 else data["data"]
