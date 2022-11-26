@@ -399,9 +399,9 @@ class ChinaTelecom:
 
 
 if __name__ == "__main__":
-    phone = get_environ("TELECOM_PHONE")
-    password = get_environ("TELECOM_PASSWORD")
-    foods = int(float(get_environ("TELECOM_FOOD", 0, False)))
+    phone = get_environ("18198602356")
+    password = get_environ("133412")
+    foods = int(float(get_environ("10", 0, False)))
     if phone == "":
         exit(0)
     if password == "":
